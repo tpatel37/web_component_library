@@ -9,10 +9,10 @@ import TableFooter from './TableFooter';
 const meta: Meta<typeof Table> = {
   title: 'Components/Table',
   component: Table,
-  tags: ['autodocs'],  // Ensures Storybook detects documentation
+  tags: ['autodocs'],
 };
 
-export default meta; // ✅ This is the missing default export
+export default meta; // ✅ Default export is required for Storybook
 
 type Story = StoryObj<typeof Table>;
 
