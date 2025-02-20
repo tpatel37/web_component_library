@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 export type ButtonProps = {
-  label: string;
+  label: string;  // ✅ Ensure label is required
   disabled?: boolean;
   onClick?: () => void;
 };

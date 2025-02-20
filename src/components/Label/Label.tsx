@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 export type LabelProps = {
-  text: string;
+  text: string;  // ✅ Ensure text is required
   color?: string;
   size?: string;
   htmlFor?: string;
