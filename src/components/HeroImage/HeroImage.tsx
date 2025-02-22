@@ -8,11 +8,11 @@ export type HeroImageProps = {
   overlayText?: string;
 };
 
-const HeroContainer = styled.div<HeroImageProps>`
+// Container for the hero section
+const HeroContainer = styled.div<{ $height?: string }>`
   position: relative;
   width: 100%;
-  height: ${(props) => props.height || '300px'};
-  background: url(${(props) => props.src}) center/cover no-repeat;
+  height: ${(props) => props.$height || '300px'};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -21,10 +21,30 @@ const HeroContainer = styled.div<HeroImageProps>`
   font-weight: bold;
   text-align: center;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+`;
+
+// Background image
+const StyledImage = styled.img`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+`;
+
+const OverlayText = styled.div`
+  position: relative;
+  z-index: 1;
 `;
 
 const HeroImage: React.FC<HeroImageProps> = ({ src, alt, height, overlayText }) => {
-  return <HeroContainer src={src} height={height} aria-label={alt}>{overlayText}</HeroContainer>;
+  return (
+    <HeroContainer $height={height} role="img" aria-label={alt}>
+      <StyledImage src={src} alt={alt} />
+      {overlayText && <OverlayText>{overlayText}</OverlayText>}
+    </HeroContainer>
+  );
 };
 
 export default HeroImage;

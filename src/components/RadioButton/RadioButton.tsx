@@ -10,11 +10,12 @@ export type RadioButtonProps = {
   disabled?: boolean;
 };
 
-const StyledLabel = styled.label`
+// Styled Components
+const StyledLabel = styled.label<{ $disabled?: boolean }>`
   display: flex;
   align-items: center;
-  cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')};
-  opacity: ${(props) => (props.disabled ? 0.5 : 1)};
+  cursor: ${(props) => (props.$disabled ? 'not-allowed' : 'pointer')};
+  opacity: ${(props) => (props.$disabled ? 0.5 : 1)};
 `;
 
 const StyledInput = styled.input`
@@ -24,7 +25,7 @@ const StyledInput = styled.input`
 
 const RadioButton: React.FC<RadioButtonProps> = ({ label, value, name, checked, onChange, disabled }) => {
   return (
-    <StyledLabel disabled={disabled}>
+    <StyledLabel $disabled={disabled}>
       <StyledInput
         type="radio"
         value={value}

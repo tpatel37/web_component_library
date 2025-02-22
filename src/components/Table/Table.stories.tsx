@@ -37,7 +37,12 @@ export const Default: Story = {
       </tbody>
       <TableFooter>
         <TableRow>
-          <TableCell align="center" colSpan={2}>Footer</TableCell>
+          {/* Option 1: If TableCell supports colSpan */}
+          {/* <TableCell align="center" colSpan={2}>Footer</TableCell> */}
+          
+          {/* Option 2: If TableCell does not support colSpan */}
+          <TableCell align="center">Footer 1</TableCell>
+          <TableCell align="center">Footer 2</TableCell>
         </TableRow>
       </TableFooter>
     </Table>

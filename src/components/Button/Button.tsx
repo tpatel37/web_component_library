@@ -2,12 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 
 export type ButtonProps = {
-  label: string;  // ✅ Ensure label is required
+  label: string;
   disabled?: boolean;
   onClick?: () => void;
 };
 
-const StyledButton = styled.button<ButtonProps>`
+// Exclude `label` from passing into StyledButton
+const StyledButton = styled.button<Omit<ButtonProps, 'label'>>`
   padding: 10px 20px;
   font-size: 16px;
   border: none;

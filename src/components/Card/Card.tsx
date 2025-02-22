@@ -10,9 +10,11 @@ export type CardProps = {
   onClick?: () => void;
 };
 
-const StyledCard = styled.div<CardProps>`
+// Ensure unnecessary props are not passed to StyledCard
+const StyledCard = styled.div<Omit<CardProps, 'title' | 'description' | 'imageSrc'>>`
   width: ${(props) => props.width || '300px'};
   height: ${(props) => props.height || 'auto'};
+  min-height: 150px; // Prevent collapse if no image
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
@@ -23,7 +25,8 @@ const StyledCard = styled.div<CardProps>`
 
 const CardImage = styled.img`
   width: 100%;
-  height: auto;
+  height: 180px; // Set a default height
+  object-fit: cover; // Maintain aspect ratio
 `;
 
 const CardContent = styled.div`
